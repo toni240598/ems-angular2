@@ -1,0 +1,44 @@
+<div *ngIf="infoType == 'css'">
+	<span *ngIf="color == 'normal';else otherColor">
+		<div class="building">
+			<div [class]="styles.left"><div [class]="styles.middle"></div><div [class]="styles.right"></div>
+				<p>{{label}}</p>
+			</div>
+		</div>
+	</span>
+	
+	<ng-template #otherColor>
+		<div [class]="styles.left+'-'+color"><div [class]="styles.right+'-'+color"></div></div>
+	</ng-template>
+</div>
+
+
+<div *ngIf="infoType == 'image'">
+	<div [class]="styles" [ngStyle]="{'color':color}">
+			<img [src]="image" aria-hidden="true">
+		<span mdTooltip="{{label}}">
+			<div [class]="text['txtTop']">{{value.temp_material}}</div>
+				<div [class]="text['txtMdl']">{{value.temp_air}}{{value.lifetime}}</div>
+				<div [class]="text['txtBtm']">{{value.temp_setting}}</div>
+			<div *ngIf="config.styles == 'chiller'" class="round" [ngStyle]="{'color':condition}"></div>
+		</span>
+	</div>
+</div>
+
+	<div *ngIf="infoType == 'icon'">
+		<div [class]="styles">
+			<span mdTooltip="{{label}}">
+		      	<button *ngIf=" text.txtTop == 'none'"  md-mini-fab [ngStyle]="{'background-color':color}">
+		      		<i [class]="icon" aria-hidden="true"></i>
+		      	</button>
+
+		      	<div *ngIf="text.txtTop != 'none'">
+		      		<i [class]="icon" aria-hidden="true" [ngStyle]="{'color':color, 'font-size':35+'px'}"></i>
+			      	<div [class]="text['txtTop']">12</div>
+					<div [class]="text['txtBtm']">14</div>
+				</div>
+		    </span>
+	    </div>
+	</div>
+
+	

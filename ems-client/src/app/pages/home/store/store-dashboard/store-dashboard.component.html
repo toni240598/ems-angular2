@@ -1,3 +1,13 @@
-<p>
-  store-dashboard works!
-</p>
+<div class="row">
+    <div class="col-md-6 col-xs-12">
+            <app-area (newBuilding)="building($event)" [type]="space" *ngIf="space == 'building'">
+            </app-area>
+            <div [hidden]="space == 'building'">    
+            	Chart
+            </div>
+    </div>
+
+    <div class="col-md-6 col-xs-12">
+        <app-area [dataBuilding]="buildingData" [item]="items" (building)="area($event)"></app-area>
+    </div>
+</div>

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import {MaterialModule } from "../tools/materials";
-
+import {SharedModule } from "../shared/shared.module";
 
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
@@ -27,7 +27,8 @@ import { HomeDashboardComponent } from './home/home-dashboard/home-dashboard.com
     CommonModule,
     TemplateModule,
     RouterModule,
-    MaterialModule
+    MaterialModule,
+    SharedModule
   ],
   declarations: [
     HomeComponent, 

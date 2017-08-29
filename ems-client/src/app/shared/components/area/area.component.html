@@ -1,0 +1,165 @@
+	<div class="col-lg-12" *ngIf="type == 'building'">
+		<div class="card card-stats">
+			<div class="card-content">
+				<tabset justified="true">
+					<tab>
+				    	<ng-template tabHeading>
+				    		<i class="material-icons" [ngStyle]="{'font-size':18+'px'}">input</i>
+				    	</ng-template><br>
+
+				    	<span [ngStyle]="{'margin-right':80+'%','font-family':'Times New Roman, Times, serif','font-size':16+'px'}">Door 1</span>
+				    	<div [ngStyle]="{'margin-right':30+'%'}">
+			                   <div class="btn-group">
+				                    <button type="button" class="btn-default" (dblclick)="addBuilding('door1','left','')"><div class="door1-left"></div></button>
+				                    <button type="button" class="btn-default" (dblclick)="addBuilding('door1','top','')"><div class="door1-top"></div></button>
+				                    <button type="button" class="btn-default" (dblclick)="addBuilding('door1', 'right','')"><div class="door1-right"></div></button>
+				                    <button type="button" class="btn-default" (dblclick)="addBuilding('door1','bottom', '')"><div class="door1-bottom"></div></button>
+			                  </div><br>
+                			<em class="text-muted" [ngStyle]="{'font-size':13+'px'}">please double tap to bottom</em>
+				    	</div>
+				    </tab>
+
+				    <tab>
+				    	<ng-template tabHeading>
+				    		2<i class="material-icons" [ngStyle]="{'font-size':18+'px'}">input</i>
+				    	</ng-template><br>
+
+				    	<span [ngStyle]="{'margin-right':80+'%','font-family':'Times New Roman, Times, serif', 'font-size':16+'px'}">Door 2</span>
+				    	<div [ngStyle]="{'margin-right':30+'%'}">
+			                <div class="btn-group" [ngStyle]="{'margin-right':-15+'%'}">
+			                    <button type="button" class="btn-default" style="height: 75px;" (dblclick)="addBuilding('door2','left','')"><div class="door-left" style="margin-top: -30px;"><div class="door-left1"></div></div></button>
+			                    <button type="button" class="btn-default" style="height: 75px;width: 75px;" 
+			                    (dblclick)="addBuilding('door2','top','')"><div class="door-top" style="margin-left: -5px;"><div class="door-top1"></div></div></button>
+			                    <button type="button" class="btn-default" style="height: 75px;" (dblclick)="addBuilding('door2','right','')"><div class="door-right" style="margin-top: -30px;"><div class="door-right1"></div></div></button>
+			                    <button type="button" class="btn-default" style="height: 75px;width: 75px;" 
+			                    (dblclick)="addBuilding('door2','bottom','')"><div class="door-bottom" style="margin-left: -5px;"><div class="door-bottom1"></div></div></button>
+			                </div><br>
+				    		<em class="text-muted" [ngStyle]="{'font-size':13+'px'}">please double tap to bottom</em>
+				    	</div>
+				    </tab>
+
+				  	<tab>
+				    	<ng-template tabHeading>
+				    		<md-icon class="fa fa-television" [ngStyle]="{'font-size':18+'px'}"></md-icon>
+				    	</ng-template><br>
+
+				    	<span [ngStyle]="{'margin-right':80+'%','font-family':'Times New Roman, Times, serif','font-size':16+'px'}">Cashier</span>
+				    	<span [ngStyle]="{'margin-right':30+'%'}" >
+						    	<button type="button" class="btn-default btn-lg" [ngStyle]="{'margin-right':45+'%'}"
+						    	(dblclick)="addBuilding('cashier','','Cashier')">
+						    		<md-icon class="fa fa-television" [ngStyle]="{'font-size':18+'px'}"></md-icon>
+						    	</button><br><br>
+							<em class="text-muted" [ngStyle]="{'font-size':13+'px'}">please double tap to bottom</em>
+						</span>
+				    </tab>
+
+					<tab>
+				    	<ng-template tabHeading>
+				    		<i class="material-icons" [ngStyle]="{'font-size':18+'px'}">pause</i>
+				    	</ng-template><br>
+
+				    	<span [ngStyle]="{'margin-right':80+'%','font-family':'Times New Roman, Times, serif','font-size':16+'px'}">Rack</span>
+				    	<span [ngStyle]="{'margin-right':30+'%'}">
+				    		<div class="btn-group" [ngStyle]="{'margin-right':10+'%'}">
+					    		<button type="button" class="btn-default btn-lg" style="width: 150px;height: 30px;" (dblclick)="addBuilding('rack5x1','','Rack 5x1')">
+					    		<p [ngStyle]="{'font-size':13+'px', 'margin-top':-5+'px'}">Rack 5X1</p></button>
+			                    <button type="button" class="btn-default btn-lg" style="width: 130px;height: 40px;" (dblclick)="addBuilding('rack5x2','','Rack 5x2')">
+			                    <p [ngStyle]="{'font-size':13+'px'}">Rack 5X2</p></button>
+			                    <button type="button" class="btn-default btn-lg rack2x2"
+			                    (dblclick)="addBuilding('rack2x2','' ,'Rack 2x2')">
+			                    <p [ngStyle]="{'font-size':12+'px'}">Rack 2X2</p></button>
+		                    </div><br><br>
+		                    <em class="text-muted" [ngStyle]="{'font-size':13+'px'}">please double tap to bottom</em>
+				    	</span>
+				    </tab>
+
+				    <tab>
+				    	<ng-template tabHeading>
+				    		<md-icon class="fa fa-building" [ngStyle]="{'font-size':18+'px'}"></md-icon>
+				    	</ng-template><br>
+
+				    	<span [ngStyle]="{'margin-right':80+'%','font-family':'Times New Roman, Times, serif','font-size':16+'px'}">ATM</span>
+				    	<span [ngStyle]="{'margin-right':30+'%'}">
+		                    	<button type="button" class="btn-default btn-lg"
+		                    	(dblclick)="addBuilding('atm','', 'ATM')" 
+		                    	[ngStyle]="{'margin-right':45+'%'}"><div class="ATM"><div class="txtatm">ATM</div></div></button><br><br>
+				    		<em class="text-muted" [ngStyle]="{'font-size':13+'px'}">please double tap to bottom</em>
+				    	</span>
+				    </tab>
+				</tabset>
+			</div>
+		</div>
+	</div>
+
+<div class="card" *ngIf="type != 'building'">
+	<div class="card-content">
+		<em *ngIf="typeSave == 'building'" [ngStyle]="{'font-size':13+'px'}">
+			please double tap to delete building ...
+		</em>
+		<button class="btn-xs btn-default" [ngStyle]="{'margin-top':-7+'px', float:'right'}" *ngIf="!draggableEnabled" (click)="draggableEnabled=true" (click)="Edit('building')">Edit Building
+		<md-icon class="fa fa-building-o"></md-icon></button>
+		<button class="btn-xs btn-default" [ngStyle]="{'margin-top':-7+'px', float:'right'}" *ngIf="!draggableEnabled" (click)="draggableEnabled=true" (click)="Edit('item')">Edit Item
+		<md-icon class="fa fa-arrows"></md-icon></button>
+		<button class="btn-xs btn-default" [ngStyle]="{'margin-top':-5+'px', float:'right'}" *ngIf="draggableEnabled" (click)="draggableEnabled=!draggableEnabled" (click)="cancel(undefined)">Cancel
+		<md-icon class="fa fa-undo"></md-icon></button>
+		<button class="btn-xs btn-default" [ngStyle]="{'margin-top':-5+'px', float:'right'}" *ngIf="draggableEnabled" (click)="draggableEnabled=!draggableEnabled" (click)="save(undefined)">Save
+		<md-icon class="fa fa-floppy-o"></md-icon></button>
+
+	</div>
+
+	
+	<div [ngStyle]="{'padding-left':8+'px', 'padding-right':8+'px',
+		'padding-bottom':8+'px','padding-top':5+'px'}">
+		<div class="card-content card-shdw" [ngStyle]="{'padding-left':5+'px', 'padding-right':5+'px',
+					'padding-bottom':5+'px','padding-top':4+'px'}">
+			<div id="container">
+				<div *ngIf="typeSave == 'item' || typeSave == undefined">
+
+				<!-- 	<span *ngFor="let items of item" [ngDraggable]="draggableEnabled==true"
+						   [ngStyle]="{position:'absolute', 'left':items.left+'%', 'top':items.top+'px', width:10+'%'}" [id]="items.id" (click)="move(items.id, items.styles)"> -->
+					<span *ngFor="let items of item;let i = index;" 
+					[ng2-draggable]="draggableEnabled==true"
+						   [ngStyle]="{position:'absolute', 'left':items.left+'px', 'top':items.top+'px', width:10+'%'}" [id]="items.id" 
+						   (stopped)="onDragEnd($event,items.id,i)">
+							<app-item *ngIf="items.styles == 'ac'      ||
+							 				 items.styles == 'chiller' || 
+							 				 items.styles == 'pump'    ||
+							 				 items.styles == 'temperature'" [config]="items">
+						    </app-item>
+					</span>
+
+				</div>
+
+				<div *ngIf="typeSave == 'building' || typeSave == undefined">
+					<div [ng2-draggable]="draggableEnabled == true" *ngFor="let items of item" [ngStyle]="		 		 {position:'absolute','left':items.left+'px','top':items.top+'px', width:100+'%'}"
+						 [id]="items.id" (click)="move(items.id, items.styles)">
+
+						<span *ngIf="typeSave == 'building'" (dblclick)="delete(items.id)">
+							 	<app-item *ngIf="items.styles == 'door2'   ||
+							 				     items.styles == 'door1'   || 
+							 				  	 items.styles == 'rack2x2' ||
+							 				  	 items.styles == 'rack5x1' ||
+							 				  	 items.styles == 'rack5x2' ||
+							 				  	 items.styles == 'cashier' ||
+							 				  	 items.styles == 'atm'" [config]="items">	
+							 	</app-item>
+						</span>
+
+						<span *ngIf="typeSave == undefined">
+					 	 		<app-item *ngIf="items.styles == 'door2'  ||
+						 				         items.styles == 'door1'  || 
+						 				  	     items.styles == 'rack2x2'||
+						 				  	     items.styles == 'rack5x1'||
+						 				  	     items.styles == 'rack5x2'||
+						 				  	     items.styles == 'cashier'||
+						 				  	     items.styles == 'atm'"  [config]="items">
+						 		</app-item>
+						</span>
+						 
+					</div>
+				</div>
+			</div>
+        </div>
+	</div>
+</div>
+

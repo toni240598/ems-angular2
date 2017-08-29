@@ -1,0 +1,191 @@
+#container{
+	height: 305px;
+	width: 100%;
+	border: 2px solid;
+    position: relative;
+    overflow-x:hidden;
+}
+
+.ng-draggable {
+  cursor: move;
+}
+.card-shdw{
+    box-shadow: 0 2px 2px 0 rgba(67, 147, 200, 1);
+}
+
+.card-shdw:hover{
+    box-shadow: 0 4px 5px 0 rgba(67, 147, 200, 5);
+}
+
+button{
+  outline: none;
+  border-radius: 4px;
+  box-shadow: 0 2px #999;
+}
+
+button:active {
+  box-shadow: 0 1px #666;
+  transform: translateY(3px);
+}
+
+/*building item*/
+
+/*DOOR*/
+
+.door-right {
+    width: 30px;
+    height: 30px;
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+    border-right: 5px solid white;
+    border-top: 3px solid;
+    border-bottom-left-radius: 65px;
+}
+
+.door-right1 {
+    width: 30px;
+    height: 30px;
+    border-bottom: 3px solid;
+    border-left: 1px solid;
+    border-right: 5px solid white;
+    border-top: 1px solid;
+    border-top-left-radius: 65px;
+    margin-top: 26px;
+}
+
+.door-top {
+    width: 30px;
+    height: 30px;
+    border-bottom: 1px solid;
+    border-left: 3px solid;
+    border-right: 1px solid;
+    border-top: 5px solid white;
+    border-bottom-right-radius: 65px;
+}
+
+.door-top1 {
+    width: 30px;
+    height: 30px;
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+    border-right: 3px solid;
+    border-top: 5px solid white;
+    border-bottom-left-radius: 65px;
+    margin-left: 26px;
+    margin-top: -5px;
+}
+
+.door-left {
+    width: 30px;
+    height: 30px;
+    border-left: 5px solid white;
+    border-right: 1px solid;
+    border-top: 3px solid;
+    border-bottom: 1px solid;
+    border-bottom-right-radius: 65px;
+}
+
+.door-left1 {
+    width: 30px;
+    height: 30px;
+    border-bottom: 3px solid;
+    border-left: 5px solid white;
+    border-right: 1px solid;
+    border-top: 1px solid;
+    border-top-right-radius: 65px;
+    margin-top: 26px;
+    margin-left: -5px;
+}
+
+.door-bottom {
+    width: 30px;
+    height: 30px;
+    border-bottom: 5px solid white;
+    border-left: 3px solid;
+    border-right: 1px solid;
+    border-top: 1px solid;
+    border-top-right-radius: 60px;
+}
+
+.door-bottom1 {
+    width: 30px;
+    height: 30px;
+    border-bottom: 5px solid white;
+    border-left: 1px solid;
+    border-right: 3px solid;
+    border-top: 1px solid;
+    border-top-left-radius: 60px;
+    margin-left: 26px;
+}
+
+.door1-left {
+    width: 25px;
+    height: 25px;
+    border-top: 1px solid;
+    border-right: 1px solid;
+    border-left: 3px solid white;
+    border-bottom: 3px solid;
+    border-top-right-radius: 60px;
+}
+
+.door1-bottom {
+    width: 25px;
+    height: 25px;
+    border-right: 3px solid;
+    border-top: 1px solid;
+    border-left: 1px solid;
+    border-bottom: 3px solid white;
+    border-top-left-radius: 65px;
+}
+
+.door1-right {
+    width: 25px;
+    height: 25px;
+    border-right: 3px solid white;
+    border-top: 3px solid;
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+    border-bottom-left-radius: 65px;
+}
+
+.door1-top {
+    width: 25px;
+    height: 25px;
+    border-right: 3px solid;
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+    border-top: 3px solid white;
+    border-bottom-left-radius: 65px;
+}
+
+// ATM
+
+.ATM {
+    width: 27px;
+    height: 20px;
+    position: relative;
+    border: 2px solid #474e5d;
+    border-radius: 1px;
+    box-shadow: 5px 5px 3px #888888;
+    font-size: 10px;
+}
+
+.txtatm {
+    font-size: 8px;
+    margin: 3px 0px 5px 0px;
+    font-weight: bold;
+}
+
+.frame {
+    border-top: 2px solid #444;
+    border-bottom: 2px solid #444;
+}
+.rack2x2{
+    margin: 8px 0px -17px 3px;
+    height: 38px;
+    width: 22%;
+}
+.rack2x2>p{
+    margin: -2px 0px -1px -6px;
+    font-size: 8px;
+}
