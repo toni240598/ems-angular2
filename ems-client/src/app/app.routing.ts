@@ -12,6 +12,7 @@ import { StoreDashboardComponent } from "./pages/home/store/store-dashboard/stor
 import { StoreInventoryComponent } from "./pages/home/store/store-inventory/store-inventory.component";
 import { StoreAlarmComponent }    from "./pages/home/store/store-alarm/store-alarm.component";
 
+
 const routes:Routes = [
    {  path:"home", component: HomeComponent, data:{state:"home"}, children : [
    		{ path : "dashboard", component : HomeDashboardComponent, data:{state:"home-dashboard"}},
@@ -21,7 +22,7 @@ const routes:Routes = [
               {path:"alarm",     component:StoreAlarmComponent     ,data:{state:"store-alarm"}},
               {path:"", redirectTo:"dashboard", pathMatch:"full"}
          ]},
-         { path : "alarm",     component : AlarmComponent, data: {state:"alarm"}},
+      { path : "alarm",     component : AlarmComponent, data: {state:"alarm"}},
    		{ path : '', redirectTo: 'dashboard', pathMatch:'full'}
       ] 
    },

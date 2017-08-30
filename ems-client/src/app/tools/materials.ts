@@ -3,7 +3,11 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { 
 	MdTabsModule, 
 	MdIconModule,
-	MdTooltipModule 
+	MdTooltipModule,
+	MdSelectModule,
+	MdPaginatorModule,
+	MdDatepickerModule,
+	MdInputModule 
 } from "@angular/material";
 import "hammerjs";
 
@@ -11,7 +15,11 @@ import "hammerjs";
 	exports : [
 		MdTabsModule,
 		MdIconModule,
-		MdTooltipModule
+		MdTooltipModule,
+		MdSelectModule,
+		MdPaginatorModule,
+		MdDatepickerModule,
+		MdInputModule
 	]
 })
 
