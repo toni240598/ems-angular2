@@ -1,0 +1,54 @@
+<div class="card-chart">
+    <div class="card-header card-header-icon" data-background-color="red">
+        <i [class]="icon"></i>
+    </div>
+    <div class="card-content">
+        <h4 class="card-title">
+            <div *ngIf="type=='bar_chart';else lineChart"> 
+                <md-select placeholder="Monthly" floatPlaceholder="never" [(ngModel)]="chartType"
+                 (change)="changeType(chartType)">
+                    <md-option *ngFor="let option of typeset" [value]="option">
+                        {{option | capitalize}}
+                    </md-option>
+                </md-select>
+                power consumption
+            </div>
+            <ng-template #lineChart>
+                Type Chart&nbsp;:&nbsp; 
+                <md-select placeholder="Monthly" floatPlaceholder="never" [(ngModel)]="chartType"
+                 (change)="changeType(chartType)">
+                    <md-option *ngFor="let option of typeset" [value]="option">
+                        {{option | capitalize}}
+                    </md-option>
+                </md-select> 
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                Type Equipment&nbsp;:&nbsp; 
+                <md-select placeholder="All" floatPlaceholder="never" 
+                 [(ngModel)]="equipmentType">
+                    <md-option value="all">All</md-option>
+                    <md-option value="ac">AC</md-option>
+                    <md-option value="chiller">Chiller</md-option>
+                    <md-option value="alarm">Alarm</md-option>
+                    <md-option value="temperature">Temperature</md-option> 
+                </md-select> 
+
+            </ng-template>
+        </h4>
+        <div class="toolbar"></div>
+        <div>
+            <div *ngIf="type=='bar_chart';then barchart else linechart"></div>
+            <ng-template #barchart>
+                <canvas style="height:290px;" baseChart [datasets]="chartset.dataset" 
+                 [labels]="chartset.label" [options]="chartset.option" [legend]="true" 
+                 [chartType]="chartset.type">
+                </canvas>    
+            </ng-template>
+            <ng-template #linechart>
+                <div [chart]="chartset"></div>
+            </ng-template>    
+        </div>
+    </div>
+</div>
+
+
+

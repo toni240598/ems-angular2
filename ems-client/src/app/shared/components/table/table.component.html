@@ -1,0 +1,150 @@
+
+<div class="card-table">
+    <div class="card-header card-header-icon" data-background-color="red">
+        <i class="material-icons">assignment</i>
+    </div>
+    <div class="card-content">
+        <h4 class="card-title">{{label | capitalize }}</h4>
+        <div class="toolbar"></div>
+        <div class="material-datatables">
+            <div class="row" *ngIf="create">
+                <div class="col-md-2">
+                    <button class="btn btn-info btn-sm" (click)="sendAction('create')">
+                        <i class="fa fa-plus"></i>&nbsp;&nbsp;Add new
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <md-input-container style="width:100%;">
+                        <md-placeholder>
+                            <i class="fa fa-search"></i>&nbsp;Search
+                        </md-placeholder>
+                        <input mdInput [(ngModel)]="search" (ngModelChange)="searching($event)"> 
+                    </md-input-container>
+                </div>
+                
+                <ng-container *ngIf="customFilter.length!=0 && customFilter!=undefined;">
+                    <div class="col-md-3" *ngFor="let search of customFilter;let i = index">
+                        <div *ngIf="search.datepicker==undefined;then default else datepicker">
+                        </div>
+                        <!-- //default -->
+                        <ng-template #default>
+                            <md-select [placeholder]="search.label" [(ngModel)]="search.value" 
+                            (ngModelChange)="setCustomFilter($event,search.column)"
+                             style="width:100%;padding:15px 0px 15px 0px;">
+                               <md-option *ngFor="let select of search.list"
+                                [value]="select.value">{{select.value | capitalize}}</md-option>
+                            </md-select>
+                        </ng-template>
+                        <!-- if datepicker -->
+                        <ng-template #datepicker>
+                            <md-input-container>
+                              <input mdInput 
+                                [mdDatepicker]="picker" 
+                                [placeholder]="search.label"
+                                [(ngModel)]="myDate"
+                                (ngModelChange)="searchDate($event)" 
+                              >
+                              <button mdSuffix [mdDatepickerToggle]="picker"></button>
+                            </md-input-container>
+                            <md-datepicker #picker></md-datepicker>
+                        </ng-template>
+                    </div>
+                </ng-container>
+
+            </div>
+            <div class="row">
+                 <div *ngIf="data.length==0;else show;">
+                    <h3 style="padding-left: 20px;">Data is empty</h3>
+                 </div>
+                 <ng-template #show>
+                     <table class="table">
+                        <thead>
+                            <tr>
+                                <ng-container *ngFor="let column of columns;let j= index"> 
+                                    <th  *ngIf="column.hide == undefined" class="pointer"  
+                                    (click)="sorting(j)">
+                                        <strong *ngIf="column.field!='id';else header">
+                                            {{column.field | capitalize}}&nbsp;&nbsp;
+                                            <i [class]="column.icon"></i>
+                                        </strong>
+                                        <ng-template #header><strong>#</strong></ng-template>
+                                    </th>
+                                </ng-container>
+                                <th class="text-center" *ngIf="columnAction!=undefined" 
+                                style="width:100px;">
+                                    <strong>Actions</strong>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let rows of data; let i = index; ">
+                                <ng-container *ngFor="let column of columns"> 
+                                    <td *ngIf="column.hide == undefined">
+                                        <span *ngIf="column.field!='id';else body">
+                                            <span *ngIf="column.filter==undefined;else fieldFilter">
+                                                {{rows[ column.field ]}}
+                                            </span>
+                                            <ng-template #fieldFilter> 
+                                                {{rows[ column.field ] | field : column.filter }}
+                                            </ng-template>
+                                        </span>
+                                        <ng-template #body>{{(i+1) + page.indexStart }}</ng-template>
+                                    </td>
+                                </ng-container>
+
+                                <td class="text-center" *ngIf="columnAction!=undefined">
+                                    <ng-container *ngFor="let a of columnAction">
+
+                                    <button class="btn btn-info btn-simple" mdTooltip="View analysis" 
+                                    mdTooltipPosition="above" style="padding:0px;margin:0px 5px;"
+                                    *ngIf="a=='view'" (click)="sendAction(a,rows)">
+                                         <i class="material-icons">art_track</i>
+                                    </button>    
+
+                                    <button class="btn btn-success btn-simple" mdTooltip="Edit" 
+                                    mdTooltipPosition="above" style="padding:0px;margin:0px 5px;"
+                                    *ngIf="a=='edit'" (click)="sendAction(a,rows)">
+                                        <i class="material-icons">edit</i>
+                                    </button>
+
+                                    <button class="btn btn-danger btn-simple" mdTooltip="Remove" 
+                                    mdTooltipPosition="above" style="padding:0px;margin:0px 5px;"
+                                    *ngIf="a=='remove'" (click)="sendAction(a,rows)">
+                                        <i class="material-icons">close</i>
+                                    </button>
+
+                                    <button class="btn btn-warning btn-simple" mdTooltip="Send to email"
+                                    mdTooltipPosition="above" style="padding:0px;margin:0px 5px;"
+                                    *ngIf="a=='email'" (click)="sendAction(a,rows)">
+                                        <i class="material-icons">email</i>
+                                    </button>
+
+                                    <button class="btn btn-primary btn-simple" 
+                                    mdTooltip="User knowledge"
+                                    mdTooltipPosition="above" style="padding:0px;margin:0px 5px;"
+                                    *ngIf="a=='knowledge'" (click)="sendAction(a,rows)">
+                                        <i class="material-icons">done</i>
+                                    </button>
+
+                                    </ng-container>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </ng-template>
+            </div>
+            <div class="row">
+                <md-paginator [length]="page.dataset.length" [pageSize]="page.pageSize" 
+                [pageSizeOptions]="[10, 25, 50, 100]"
+                (page)="setPage($event)">
+                </md-paginator>
+            </div>
+
+        </div>        
+    </div>
+</div>
+
+
+

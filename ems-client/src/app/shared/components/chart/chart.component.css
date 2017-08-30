@@ -1,0 +1,56 @@
+
+/*data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];*/
+
+.card-chart {
+	display: inline-block;
+    position: relative;
+    width: 100%;
+    margin: 25px 0;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+    border-radius: 6px;
+    color: rgba(0,0,0, 0.87);
+    background: #fff;
+}
+
+
+.card-chart .card-header.card-header-icon {
+  float: left;
+}
+.card-chart .card-header.card-header-icon i {
+  width: 33px;
+  height: 33px;
+  text-align: center;
+  line-height: 33px;
+  font-size: 20px;
+}
+
+.card-chart .card-content .card-title {
+   font-size: 18px;
+}
+
+.card-chart [data-background-color] {
+  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+  margin: -20px 15px 0;
+  border-radius: 3px;
+  padding: 15px;
+  background-color: #999999;
+  position: relative;
+}
+
+.card-chart [data-background-color="red"] {
+  background: linear-gradient(60deg, #ef5350, #e53935);
+  box-shadow: 0 12px 20px -10px rgba(244, 67, 54, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(244, 67, 54, 0.2);
+}
+
+.card-chart [data-background-color] {
+  color: #FFFFFF;
+}
+
+.card-chart .card-content {
+  padding: 8px 20px;
+  position: relative;
+}
+.card-chart .card-content .category {
+  margin-bottom: 0;
+}
+

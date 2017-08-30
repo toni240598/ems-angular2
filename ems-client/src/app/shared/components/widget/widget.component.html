@@ -1,0 +1,121 @@
+<div *ngIf="template == 'default'; then default"></div>
+<div *ngIf="template == 'store'; then store"></div>
+<div *ngIf="template == 'dashboard'; then dashboard"></div>
+
+
+
+
+
+<ng-template #dashboard>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span class="pull-right">
+                <button class="btn btn-simple btn-success" mdTooltip="Edit" 
+                (click)="sendAction('edit',{id:id})"
+                mdTooltipPosition="above" style="width:10px;padding:0px;margin:0;">
+                     <i class="material-icons">edit</i>
+                </button>&nbsp;&nbsp;
+                <button class="btn btn-simple btn-danger" mdTooltip="Remove"
+                (click)="sendAction('remove',{id:id})" 
+                mdTooltipPosition="above" style="width:10px;padding:0px;margin:0;">
+                     <i class="material-icons">close</i>
+                </button>
+            </span>
+            {{label}}
+        </div> 
+        <div class="text-center" style="padding:15px 40px 15px 40px;margin-bottom: -10px;">
+             <ng-gauge [bgRadius]="gauge.bgRadius" [bgColor]="gauge.bgColor"
+              [rounded]="gauge.rounded" [reverse]="gauge.reverse"
+              [animationSecs]="gauge.animationSecs" [labels]="gauge.labels"
+              [segments]="gauge.segments">
+            </ng-gauge>
+        </div>
+        <ul class="list-group no-radius">
+          <li *ngFor="let info of information" class="list-group-item" style="font-size: 13px;">
+            <span class="btn btn-simple {{info.style}}" style="width:20px;padding:0px;margin:0;">
+                <i [class]="info.icon"></i>
+            </span>
+            {{info.value}}
+          </li>
+        </ul>
+    </div>
+</ng-template>
+
+
+
+
+
+ 
+<ng-template #default>
+<div class="widget widget-stats">
+  <div class="widget-header" data-background-color="blue">
+		<i [class]="icon"></i>
+	</div>
+	<div class="widget-content">
+	    <p class="category">{{label}}</p>
+	    <div *ngIf="type=='single'" >
+	    	<p class="title {{titleClass}}"> {{value}} 
+	    		<span [class]="unitClass">{{unit}}</span>
+	    	</p>
+	    </div>
+
+	  	<div *ngIf="type=='double'">
+	  		<p class="text-double">
+		  		<span class="min">{{value.min}}<span class="unit">{{unit}}</span></span>&nbsp;
+		  		<span class="max">{{value.max}}<span class="unit">{{unit}}</span></span>
+		  	</p>
+	  	</div>  
+
+	</div>
+	 <div class="widget-footer">
+        <!-- <div class="stats">
+           <i class="fa fa-calendar"></i> 1 month ago
+        </div> -->
+    </div>
+</div>
+</ng-template>
+
+
+
+
+
+
+<ng-template #store>
+	<div class="card card-product">
+        <div class="card-image animated" data-header-animation="true">
+            <a href="#pablo">
+                <img [src]="url" style="height:160px;">
+            </a>
+        	<div class="ripple-container"></div>
+        </div>
+        <div class="card-content">
+            <div class="card-actions">
+                 <button class="btn btn-info btn-simple" mdTooltip="View Detail"  
+                 style="padding:0px;margin:15px;" 
+                 (click)="sendAction('view',{id:id})">
+                      <i class="material-icons">art_track</i>
+                  </button>
+                  <button class="btn btn-success btn-simple" mdTooltip="Edit"  
+                 style="padding:0px;margin:15px;" 
+                 (click)="sendAction('edit',{id:id})">
+                      <i class="material-icons">edit</i>
+                  </button>
+                  <button class="btn btn-danger btn-simple" mdTooltip="Remove"  
+                 style="padding:0px;margin:15px;" 
+                 (click)="sendAction('remove',{id:id})">
+                      <i class="material-icons">close</i>
+                  </button>
+            </div>
+            <h4 class="card-title">
+                <a href="#pablo">Pondok pinang 3</a>
+            </h4>
+            <div class="card-description">
+                Jl pondok pinang 3 no 9 gang bidan
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+
+
+

@@ -1,0 +1,55 @@
+<toaster-container [toasterconfig]="toasterconfig"></toaster-container>
+
+ <ng-template #template>
+  <form class="form-horizontal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalRef.hide()">
+        	<span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">{{ label | capitalize }}</h4>
+      </div>
+      <div class="modal-body">
+      
+      <div *ngIf="action!='remove';then notDelete else delete;"></div>
+
+      <ng-template #notDelete> 
+          <ng-container *ngFor="let result of properties">
+            <div class="form-group" style="margin-top: -15px">
+      					<label class="col-sm-3 control-label">{{result.label | capitalize }}</label>
+      					<div class="col-sm-9">
+		      	  	<div *ngIf="result.type != 'list';then default else list"></div>
+            <ng-template #default>			
+					    <input [type]="result.type" class="form-control" 
+					     [ngModelOptions]="{standalone: true}" 
+					     [(ngModel)]="post[result.model]"
+					     placeholder="{{result.label | capitalize }}" [disabled]="result.disabled">
+				    </ng-template>
+				    <ng-template #list>
+                 <select class="form-control" [ngModelOptions]="{standalone: true}" 
+                 [(ngModel)]="post[result.model]">
+                    <option *ngFor="let a of result.list" [value]="a.id">{{a.label}}</option>
+                 </select>
+				    </ng-template>
+      			</div>
+      			</div>
+          </ng-container>
+      </ng-template>
+      <ng-template #delete>
+          <h4 style="margin-top: -15px">
+              Are you sure to delete {{post.label | capitalize}} ?
+          </h4>
+      </ng-template>
+		  
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="modalRef.hide()" 
+        (click)="sendAction()">Save</button>
+      	<button type="button" class="btn btn-danger" (click)="modalRef.hide()">Close</button>
+      </div>
+    </div>
+  </div>
+  </form>
+</ng-template>
