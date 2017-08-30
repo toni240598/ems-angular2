@@ -1,0 +1,89 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "rest": {
+    "name": "rest",
+    "baseURL": "",
+    "crud": false,
+    "connector": "rest",
+    "operations": [
+      {
+        "functions": {
+          "stores": []
+        },
+        "template": {
+          "method": "GET",
+          "url": "http://alfademo.ddns.net:3001/discobjects",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          }
+        }
+      },
+      {
+        "functions": {
+          "store": [
+            "latitude",
+            "longitude"
+          ]
+        },
+        "template": {
+          "method": "GET",
+          "url": "http://alfademo.ddns.net:3001/discobjects/location/{latitude}/{longitude}/",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "address": "{latitude},{longitude}",
+            "sensor": "{sensor=false}"
+          }
+        }
+      },
+      {
+        "functions": {
+          "counter": [
+            "latitude",
+            "longitude"
+          ]
+        },
+        "template": {
+          "method": "GET",
+          "url": "http://alfademo.ddns.net:3001/perfcounters/{latitude}/{longitude}/",
+          "headers": {
+            "accepts": "application/json",
+            "content-type": "application/json"
+          },
+          "query": {
+            "address": "{latitude},{longitude}",
+            "sensor": "{sensor=false}"
+          }
+        }
+      },
+      {
+        "functions": {
+          "create_store": [
+            "data"
+          ]
+        },
+        "template": {
+          "method": "POST",
+          "url": "http://alfademo.ddns.net:3001/discobjects",
+          "body": "{data:object}"
+        }
+      }
+    ]
+  },
+  "ems": {
+    "host": "localhost",
+    "port": 0,
+    "url": "",
+    "database": "ems",
+    "password": "admin",
+    "name": "ems",
+    "user": "root",
+    "connector": "mysql"
+  }
+}

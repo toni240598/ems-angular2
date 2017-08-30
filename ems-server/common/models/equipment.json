@@ -1,0 +1,45 @@
+{
+  "name": "equipment",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "last_value": {
+      "type": "number"
+    },
+    "last_update": {
+      "type": "string"
+    },
+    "id_brand": {
+      "type": "number",
+      "required": true
+    },
+    "id_equipmentType": {
+      "type": "number",
+      "required": true
+    },
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "top": {
+      "type": "number",
+      "required": true
+    },
+    "left": {
+      "type": "number",
+      "required": true
+    },
+    "id_store": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

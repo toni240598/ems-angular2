@@ -1,0 +1,65 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "db"
+  },
+  "AccessToken": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": false
+  },
+  "location": {
+    "dataSource": "ems",
+    "public": true
+  },
+  "store": {
+    "dataSource": "ems",
+    "public": true
+  },
+  "app": {
+    "dataSource": "rest",
+    "public": true
+  },
+  "equipment": {
+    "dataSource": "ems",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "brand": {
+    "dataSource": "ems",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "equipmentType": {
+    "dataSource": "ems",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  }
+}
