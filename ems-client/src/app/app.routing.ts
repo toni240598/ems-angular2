@@ -27,7 +27,7 @@ const routes:Routes = [
       ] 
    },
    { path :"ceo", component : CeoComponent, data:{state:"ceo"}},
-   { path: '', redirectTo: 'home', pathMatch: 'full' }
+   { path: '', redirectTo: 'ceo', pathMatch: 'full' }
 ]
 
 @NgModule({
