@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from "@angular/forms";
 
 
-
 import { MaterialModule } from "../tools/materials";
 import { Draggable } from 'ng2draggable/draggable.directive';
 import { Ng2Webstorage } from "ng2-webstorage";

@@ -1,25 +1,30 @@
 import { NgModule } from "@angular/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { 
-	MdTabsModule, 
-	MdIconModule,
-	MdTooltipModule,
-	MdSelectModule,
-	MdPaginatorModule,
-	MdDatepickerModule,
-	MdInputModule 
+	  MdSelectModule,
+	  MdTableModule,
+	  MdPaginatorModule,
+	  MdInputModule,
+	  MdButtonModule,
+	  MdTooltipModule,
+	  MdIconModule,
+	  MdDatepickerModule,
+	  MdTabsModule
 } from "@angular/material";
 import "hammerjs";
 
 @NgModule({
 	exports : [
-		MdTabsModule,
-		MdIconModule,
-		MdTooltipModule,
-		MdSelectModule,
-		MdPaginatorModule,
-		MdDatepickerModule,
-		MdInputModule
+	  MdSelectModule,
+	  MdTableModule,
+	  MdPaginatorModule,
+	  MdInputModule,
+	  MdButtonModule,
+	  MdTooltipModule,
+	  MdIconModule,
+	  MdDatepickerModule,
+	  MdTabsModule,
+	  BrowserAnimationsModule
 	]
 })
 
