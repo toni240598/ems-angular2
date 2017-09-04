@@ -1,0 +1,51 @@
+.textSubject{
+	height: 200px;
+	width: 100%;
+   margin-top: 5px;
+}
+.textSend{
+	height: auto;
+	width: 95%;	
+   margin-top: 7px;
+}
+.btn-mail{
+	 margin-top :6px;
+	 border-radius: 5px;
+	 float: right;
+	 font-family: arial black;
+    margin: 10px 17px 0px 1px;
+}
+::-webkit-input-placeholder {
+   text-align: center;
+   padding-top:75px;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   text-align: center;
+   padding-top:75px;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   text-align: center;
+   padding-top:75px;
+}
+
+:-ms-input-placeholder {  
+   text-align: center;
+   padding-top:75px;
+}
+.card-header.card-header-icon{
+	float: left;
+	height: 62px;
+	width: 62px;
+   text-align: center;
+   line-height: 43px;
+   margin: -22px 0px 0px 14px;
+   background-color: #ea4643;
+}
+.close{
+   margin: -20px 0px 0px 10px;
+   font-size: 13px;
+   cursor: pointer;
+   color: black;
+}

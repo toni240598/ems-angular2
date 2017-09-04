@@ -24,7 +24,9 @@ import { FieldPipe } from "./pipes/field.pipe";
 //services
 import { LoopbackService } from "./services/loopback.service";
 import { HistoryService } from "./services/history.service";
+import { Loopbackv2Service } from "./services/loopbackv2.service";
 
+//komponen
 import { AreaComponent } from './components/area/area.component';
 import { ItemComponent } from './components/item/item.component';
 import { WidgetComponent } from './components/widget/widget.component';
@@ -44,7 +46,9 @@ import { MapComponent   } from "./components/map/map.component";
     ModalModule.forRoot(),
     Ng2Webstorage,
     ChartModule,
-    AgmCoreModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyD5DTq_C3F4HLDcRYbYPJKkVY4_Z16Xm5Y'
+    }),
     ToasterModule,
     GaugeModule
   ],
@@ -79,7 +83,7 @@ import { MapComponent   } from "./components/map/map.component";
     TableComponent,
     WidgetComponent,
   ],
-  providers : [HistoryService,LoopbackService]
+  providers : [HistoryService,LoopbackService,Loopbackv2Service]
 })
 
 export class SharedModule { }

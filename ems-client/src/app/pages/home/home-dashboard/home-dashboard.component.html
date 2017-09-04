@@ -1,3 +1,25 @@
-<p>
-  home-dashboard works!
-</p>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <span class="pull-right">
+          <md-select placeholder="Add New Location" [(ngModel)]="select" (change)="addView(select)" 
+          name="select" [ngStyle]="{'margin-top':-15+'px'}">
+            <md-option *ngFor="let select of store" [value]="select">
+              {{select.label}}
+            </md-option>
+          </md-select>
+        </span>
+        <p class="text" [ngStyle]="{'margin-top':3+'px', 'font-weight':'bold', 'font-size':18+'px'}">Group View</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" [dragula]='"another-bag"' [dragulaModel]='dataStore'>
+  <div class="col-md-3" *ngFor="let data of dataStore">
+    <app-widget [template]="'dashboard'" [config]="data" (action)="myAction($event)">
+    </app-widget>
+  </div>
+</div>

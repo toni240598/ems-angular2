@@ -1,3 +1,18 @@
-<p>
-  store-alarm works!
-</p>
+<div class="row">
+    <app-widget *ngFor="let widget of widget" 
+        [template]="'default'" 
+        [config]="widget" 
+        [label]="widget.label"
+        class="col-md-2 col-xs-12">
+    </app-widget>
+</div>
+
+
+<div  *ngIf="table">	
+	<app-table 
+		[label]="table.label" 
+		[list]="table.list" 
+		[setting]="table.setting"
+		(action)="userAction($event)">
+	</app-table>
+</div>

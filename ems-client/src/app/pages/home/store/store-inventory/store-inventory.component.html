@@ -1,3 +1,21 @@
-<p>
-  store-inventory works!
-</p>
+
+<app-form *ngIf="form"
+	[label]="form.label" 
+	[properties]="form.properties" 
+	[action]="form.action"
+	[data]="form.data"
+	[service]="form.service"
+	(response)="onResponse($event)"
+></app-form>
+
+<div class="container-fluid">
+	<div  *ngIf="table">	
+		<app-table 
+			[label]="table.label" 
+			[list]="table.list" 
+			[setting]="table.setting"
+			(action)="userAction($event)">
+		</app-table>
+	</div>
+</div>
+

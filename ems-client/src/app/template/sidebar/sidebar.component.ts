@@ -12,7 +12,7 @@ export const ROUTES: RouteInfo[] = [
     { path: 'dashboard', title: 'Dashboard',  icon: 'dashboard',    class: '' },
     { path: 'store',     title: "Store",      icon: 'store',        class: '' },
     { path: 'alarm',     title: 'Alarm',      icon:'notifications', class:''  },
-    { path: 'map',       title: 'Map',        icon: 'place',        class:'active-pro'}
+    { path: '../ceo',       title: 'Map',        icon: 'place',        class:'active-pro'}
 ];
 
 @Component({

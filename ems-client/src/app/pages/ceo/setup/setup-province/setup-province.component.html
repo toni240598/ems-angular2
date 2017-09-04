@@ -1,0 +1,20 @@
+
+<app-form *ngIf="form"
+	[label]="form.label" 
+	[properties]="form.properties" 
+	[action]="form.action"
+	[data]="form.data"
+	[service]="form.service"
+	(response)="response($event)"
+></app-form>
+
+<div  *ngIf="table">	
+	<app-table 
+		[label]="table.label" 
+		[list]="table.list" 
+		[setting]="table.setting"
+		(action)="action($event)">
+	</app-table>
+</div>
+
+

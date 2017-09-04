@@ -1,0 +1,12 @@
+<div class="containerX">
+	<div fxLayout="row"  class="coloredContainerX box" >
+	  <div fxFlex fxHide="false" fxShow.gt-sm>
+	      <app-maps-filter [getProvince]="Province" [getZone]="Zone" [getBranch]="Branch" [getStore]="Store" (OutputZone)="OutputZone($event)" [getMarker]="marker" [getAlarm]="Alarm"></app-maps-filter>
+	  </div>
+	  <div fxFlex fxShow="false" fxShow.gt-sm>
+	    <div style="height:89vh;position: relative">
+	        <app-map [getProvince]="Province" [getZoneMaps]="markerZone" (pushMarker)="getMarker($event)"></app-map>
+	    </div>
+	  </div>
+	</div>
+</div>

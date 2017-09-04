@@ -1,0 +1,32 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">		
+			<app-table 
+				[label]="'Detail '+detail.type" 
+				[list]="detail.data" 
+				[setting]="undefined"
+				(action)="userAction($event)">
+			</app-table>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-8">
+			<div class="card-content">
+				<textarea type="text" class="textSubject" placeholder="Subject" [(ngModel)]="subject"></textarea>
+			</div>
+		</div>
+
+		<div class="col-md-4">
+			<div class="card-content">
+				<div *ngFor="let input of usrInput">
+					<input  class="textSend" placeholder="Email Address" [(ngModel)]="email[input]">
+					<i class="fa fa-times close" *ngIf="input != 1" (click)="close(input)"></i>
+				</div>
+			</div>
+			<button class="button btn-primary btn-mail" (click)="addInput()">Add Email</button>
+			<button class="button btn-primary btn-mail" (click)="sendMail()" [ngStyle]="{'margin-right':5+'px'}">Send Email
+			</button>
+		</div>
+	</div>
+</div>

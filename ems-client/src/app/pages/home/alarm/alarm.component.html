@@ -1,3 +1,10 @@
-<p>
-  alarm works!
-</p>
+<div class="row">
+	<div  *ngIf="table">	
+		<app-table 
+			[label]="table.label" 
+			[list]="table.list" 
+			[setting]="table.setting"
+			(action)="searchDate($event)">
+		</app-table>
+	</div>
+</div>

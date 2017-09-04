@@ -1,17 +1,45 @@
 import { Component, OnInit } from '@angular/core';
+import { LoopbackService } from "../../../../shared/services/loopback.service";
+import { HistoryService } from "../../../../shared/services/history.service";
 
 @Component({
   selector: 'app-store-dashboard',
   templateUrl: './store-dashboard.component.html',
-  styles: []
+  styles: ['']
 })
 export class StoreDashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(public loopback:LoopbackService,public history:HistoryService){}
+  
+ 
+  watthour:any;
+  widgets:Array<any>;
+  items:Array<any>;
+  watt:Array<any>;
 
-  ngOnInit() {
+  labelChart:any;
+  ngOnInit(){
+     this.loopback.getService("store-dashboard",{
+       latitude: this.history.location.latitude,
+       longitude : this.history.location.longitude
+     }).subscribe(result=>{ 
+        this.widgets  = result.widget;
+        this.items    = result.item;
+        this.watthour = result.watthour;
+        this.watt     = result.watt;
+     })
   }
 
+  setBarChart(value){
+    this.loopback.getService("store-dashboard/chart",
+      {categoryChart:"watthour",typeChart:value})
+    .subscribe(result=>{
+       this.watthour = result;
+    })
+  }
+
+   
+  
   space        : string = 'chart';
   buildingData : Object;
   area(event){
@@ -20,13 +48,6 @@ export class StoreDashboardComponent implements OnInit {
   building(event){
      this.buildingData = event;
   }
-  
-    items:Array<any> = [
-	    // { id:2, left:94,   top:150,     name:'',           temp_material:12, temp_setting:30, temp_air:27,    status:'alarm',   styles:'door2',   position:'right',  lifetime:12 },
-	    // { id:5, left:83,  top:55,     name:'AC3',        temp_material:12, temp_setting:30, temp_air:27,    status:'major',   styles:'ac',      position:'bottom',lifetime:12 },
-	    // { id:6, left:71,  top:120,    name:'AC4',        temp_material:12, temp_setting:30, temp_air:27,    status:'off',     styles:'ac',      position:'left',  lifetime:12 },
-	    // { id:8, left:3,   top:55,     name:'Chiller1',   temp_material:12, temp_setting:30, temp_air:27,    status:'normal',  styles:'chiller', position:'',      lifetime:12 },
-	    { id:7, left:50,  top:20,      name:'Pump1',      temp_material:12, temp_setting:30, temp_air:27,    status:'normal',  styles:'pump',    position:'', lifetime:12 },
-	    // { id:1, left:20,   top:130,    name:'temperature',temp_material:88, temp_setting:12, temp_air:22,    status:'normal',  styles:'temperature',  position:'', lifetime:12 }
-	]
+
+
 }

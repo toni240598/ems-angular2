@@ -1,7 +1,7 @@
 import { Component, TemplateRef, ViewChild, Input, Output, EventEmitter,SimpleChanges } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
-import { LoopbackService } from "../../services/loopback.service";
+import { Loopbackv2Service } from "../../services/loopbackv2.service";
 import { ToasterService, ToasterConfig } from "angular2-toaster";
 import { CapitalizePipe } from "../../pipes/capitalize.pipe";
 
@@ -14,8 +14,8 @@ export class FormComponent {
 
   constructor(
      private modalService: BsModalService, 
-     public loopback:LoopbackService,
-     public toaster:ToasterService,
+     public  rest:Loopbackv2Service,
+     public  toaster:ToasterService,
   ){}
   
 
@@ -36,27 +36,30 @@ export class FormComponent {
   @Output() response:EventEmitter<any> = new EventEmitter<any>();   
   @ViewChild('template') template:TemplateRef<any>;
   
-  openModal() {      
-      if(this.action!=undefined){
-          this.modalRef = this.modalService.show(this.template);
-          if(this.action=="create"){
-             this.post = {};
-             if(this.service == "inventoryService"){
-                this.post = this.data;
-             }
-          }
-          else {
-             this.post = this.data;
-          }
+  openModal(event){
+      this.action = event.action;
+      this.data   = event.data;
+      this.modalRef = this.modalService.show(this.template);
+      if(this.action=="create"){
+         this.post = {};
+         if(this.data!=undefined){
+            this.post = this.data;
+         }
+         if(this.service == "inventoryService"){
+            this.post = this.data;
+         }
+      }
+      else {
+         this.post = this.data;
       }
   }
 
 
 
   sendAction(){
-     let rest = {action : this.action,data:this.post};
+     let rest = {action : this.action, data:this.post};
      this.parseNumber();
-     this.loopback.getService(this.service,rest).subscribe(result=>{
+     this.rest.service(this.service,rest).subscribe(result=>{
         this.toaster.pop(result.status,result.label,result.message);
         this.response.emit({action:this.action,response:result.response});
      })
@@ -82,5 +85,7 @@ export class FormComponent {
        }
     }
   }
+
+
   
 }

@@ -1,5 +1,10 @@
 import { Component, OnInit, EventEmitter, Output, Input, OnChanges} from '@angular/core';
-declare var $: any;
+import { Router }  from "@angular/router";
+
+/*
+  Fungsi dari komponen Area adalah untuk menerima data equipment dari parent komponen dan menjadikan data
+tersebut menjadi icon berdasarkan property type pada data yang telah diterima. 
+*/
 
 @Component({
   selector: 'app-area',
@@ -7,25 +12,50 @@ declare var $: any;
   styleUrls: ['./area.component.scss']
 })
 export class AreaComponent implements OnInit{
-  // untuk mengoutpukan string value ke parent komponen sebagai kondisi view building atau chart
- @Output() building    : EventEmitter<string> = new EventEmitter<string>();
- // untuk mengoutputkan data building baru ke parent komponen 
- @Output() newBuilding : EventEmitter<object> = new EventEmitter<Object>();
+  /*
+  untuk mengoutputkan string ke parent komponen sebagai kondisi view building
+  */
+  @Output() viewBuilding: EventEmitter<string> = new EventEmitter<string>();
+ 
+ /*
+ untuk mengoutputkan data equipment type building ke parent komponen
+ */@Output() emitBuilding : EventEmitter<object> = new EventEmitter<object>();
 
- // mengambil data untuk item type building dari parent komponen
- @Input() dataBuilding: Object;  
- //mengambil value string dari parent komponen untuk kondisi type view, building atau chart
- @Input() type        : string;
- // untuk mengambil data semua item dari parent komponen
- @Input() item        : any[];
-          typeSave    : string;
-          typeItem    = [];
+ /*
+,  untuk mengoutputkan data hasil drag and drop equipment ke parent komponen 
+ */@Output() event: EventEmitter<object> = new EventEmitter<object>();
 
-  constructor() { }
+ /*
+ menerima data equipment type building dari parent komponen
+ */@Input() dataBuilding  : Object;   
+
+ /*
+ menerima value string dari parent komponen untuk kondisi type view building
+ */@Input() typeView      : string;
+ 
+ /*
+ untuk menerima data Equipment dari parent komponen
+ */@Input() item          : Array<any> = [];
+          
+          position        : Array<any> = [];
+          typeSave        : string;
+          draggable       : boolean    = false;
+
+  constructor(private router:Router) {}
 
 
-  backup:Array<any> = [];
-  ngOnInit() { 
+
+  ngOnInit() {   
+    setTimeout(() =>{
+        let width = document.getElementById('container').offsetWidth;
+
+            for(var i in this.item){
+              // this.item[i].left    = (this.item[i].left*width)/100;
+              if(this.item[i].type!=undefined){ 
+                this.item[i]['type'] = this.item[i]['type'].toLowerCase();
+              }
+            }
+    }, 1000);
   }
 
 
@@ -37,100 +67,99 @@ export class AreaComponent implements OnInit{
 
 
   addBuilding(styles, position, label){
-    let Default;
-
-    Default = { left:33, top:18, name:label,temp_material:0, temp_setting:0, 
-               temp_air:0,status:'normal', styles:styles, position:position }
-
-    this.newBuilding.emit(Default)
+    let Default = { id:122, label:label, left:33, top:50, status:'normal', type:styles, position:position }
+    
+    this.emitBuilding.emit({action:'create', data:Default})
   }
+
 
   Edit(type){
-    this.typeSave = type
+    this.typeSave  = type
 
+    this.draggable = true;
       if (type == 'building') {
-          this.building.emit(type)
-      }
+          this.viewBuilding.emit(type)
+    }
   }
 
 
-  onDragEnd(event,id,index){
-    var translate = document.getElementById(id).style.transform;
-    var matrix    = new WebKitCSSMatrix(translate); 
-    var x         = matrix.m41;
-    var y         = matrix.m42;  
-    this.item[index].top += y;
-  }
-
-
-
-
-
-
-
-
-  move(id, type){
-   let left, top, min, width, valid = 0;
-
-   // function for action save
-   if (this.typeItem.length == 0) {
-       this.typeItem.push(id)
-   }
-   else{
-
-     for(var i in this.typeItem){
-         if (this.typeItem[i] == id) {
-             valid++;
-         }
-     }
-       if (valid == 0) {
-          this.typeItem.push(id)
-       }
-   }
-    
-    width = document.getElementById("container").offsetWidth
+  onDragEnd(id){
+    let left, top, min, width, valid = 0;
+   
+    width = document.getElementById("container").offsetWidth;
     left  = document.getElementById(id).offsetLeft;
     top   = document.getElementById(id).offsetTop;
-    left  = (left / width) * 100
-    min   = (left * -1) / 100
-    left  = left - min;
-
 
     for(let item of this.item){
-       if(item.id == id){
-           item.top = top;
-       }
-    } 
+      if(item.id == id){
+         item.top  = top;
+         item.left = left;
+      }
+    }
+
+
+    left = ( left / width )*100;
+    if (this.position.length == 0) {
+       this.position.push({id:id, left:left, top:top})
+    }
+    else{
+
+      for(var i in this.position){
+          if (this.position[i].id == id) {
+            valid++;
+            this.position[i].left = left;
+            this.position[i].top  = top;
+          }
+      }
+
+      if (valid == 0) {
+         this.position.push({id:id, left:left, top:top})
+      }
+   }
+ 
   }
 
-  save(event){
-    this.building.emit('chart')
 
-    for(var i in this.item){
-         for(var j in this.typeItem){
-             if (this.typeItem[j] == this.item[i].id) {
-               
-                 // console.log(this.item[i])
-             }
+
+  save(event){
+    this.draggable = false;
+    this.viewBuilding.emit('chart')
+
+    for(let item of this.item){
+        for(let position of this.position){
+            if (position.id == item.id) {
+                this.event.emit(item)
+            }
          }
     }
-    this.typeItem.splice(0, this.typeItem.length)
-    console.log(this.item);
+
+    this.position.splice(0, this.position.length)
     this.typeSave = event;
   }
 
+
+
   cancel(event){
+    this.draggable = false;
+
     this.typeSave = event
-    this.building.emit('chart')
+    this.viewBuilding.emit('chart')
+
   }
+
 
   delete(id){
     for(var i in this.item){
       if (this.item[i].id == id) {
           this.item.splice(parseInt(i), 1)
+          this.emitBuilding.emit({action:'delete', data:this.item[i]})
       }
     }
   }
 
+
+  detailIcon(id){
+    this.router.navigate(["/home/store/detail/:id/:type", {id:id, type:"equipment"}])
+  }
 
 }

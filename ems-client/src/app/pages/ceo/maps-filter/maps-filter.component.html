@@ -1,0 +1,67 @@
+<br><div class="row" style="height:87vh;position: relative" align="center">
+
+    <div class="col-md-1" style="margin-left: 10px;">
+      <span mdTooltip="View All" >
+        <button md-mini-fab color="warn" (click)="setAllMarker()" [disabled]="allMaker">
+          <i class="fa fa-refresh" aria-hidden="true"></i>
+        </button>
+      </span>
+    </div>
+
+    <!-- select Province -->
+  	<div class="col-md-2" style="padding-top: 12px;">
+      <md-select placeholder="Province" [(ngModel)]="id_province" (change)="setProvince(id_province)">
+        <md-option *ngFor="let i of province" value="{{i.id}}">{{i.label}}</md-option>
+      </md-select>
+    </div>
+
+    <!-- select Zone -->
+  	<div class="col-md-2" style="padding-top: 12px;">
+      <md-select placeholder="Zone" [(ngModel)]="id_zone" (change)="setZone(id_zone)">
+        <md-option *ngFor="let i of zone" value="{{i.id}}">{{i.label}}</md-option>
+      </md-select>
+    </div>
+
+    <!-- select Branch -->
+  	<div class="col-md-2" style="padding-top: 12px;">
+      <md-select placeholder="Branch" [(ngModel)]="id_branch" (change)="setBranch(id_branch)">
+        <md-option *ngFor="let i of branch" value="{{i.id}}">{{i.label}}</md-option>
+      </md-select>
+    </div>
+
+    <!-- select Store -->
+  	<div class="col-md-2" style="padding-top: 12px;">
+      <md-select placeholder="Store" [(ngModel)]="id_store" (change)="setStore(id_store)">
+        <md-option *ngFor="let i of store" value="{{i.id}}">{{i.label}}</md-option>
+      </md-select>
+    </div>
+
+
+
+    <!-- widget store -->
+    <br><br><br>
+    <div class="main-content">
+        <div class="container-fluid">
+        	<div class="row" *ngIf="widget" align="center" style="overflow-y:scroll;height:75vh;overflow-x:hidden;">
+    			<div class="col-md-6" *ngFor="let i of dataWidget | paginate: { itemsPerPage:6, currentPage: p }">
+
+              <a (click)="goStore(i)" style="padding-left: 30px;padding-right: 30px;">
+        				<app-widget [template]="'store'"
+                    [config]="{
+                        id      : 1,
+                        url     : '',
+                        label   : 'Pondok Pinang 3',
+                        address : 'Jl pondok pinang 3 no 9 gang bidan'
+                    }" (action)="myAction($event)">
+                </app-widget>
+              </a>
+    			</div>
+        	</div>
+        </div>
+    </div>
+    <div *ngIf="widget">
+      <b><pagination-controls (pageChange)="p = $event"></pagination-controls></b>
+    </div>
+
+
+</div>

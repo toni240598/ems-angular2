@@ -1,13 +1,39 @@
-<div class="row">
-    <div class="col-md-6 col-xs-12">
-            <app-area (newBuilding)="building($event)" [type]="space" *ngIf="space == 'building'">
-            </app-area>
-            <div [hidden]="space == 'building'">    
-            	Chart
-            </div>
+<div class="container-fluid">
+    <div class="row">
+        <app-widget *ngFor="let widget of widgets" 
+            [template]="'default'" 
+            [config]="widget" 
+            [label]="widget.label"
+            class="col-md-2 col-xs-12">
+        </app-widget>
     </div>
+</div>
 
-    <div class="col-md-6 col-xs-12">
-        <app-area [dataBuilding]="buildingData" [item]="items" (building)="area($event)"></app-area>
+<div class="container-fluid">
+     <div class="row">
+        <div class="col-md-6 col-xs-12">
+                <app-area (emitBuilding)="building($event)" [typeView]="space" *ngIf="space == 'building'"></app-area>
+                
+                <app-chart [type]="'bar_chart'" [label]="watthour.label"
+                 [hidden]="space == 'building'" *ngIf="watthour"
+                 (typeChart)="setBarChart($event)" [dataset]="watthour.dataset">    
+                </app-chart>
+        </div>
+
+        <div class="col-md-6 col-xs-12">
+            <app-area *ngIf="items" [dataBuilding]="buildingData" 
+                      [item]="items" 
+                      (viewBuilding)="area($event)"
+                      (event)="saveEquipment($event)"></app-area>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <app-chart [type]="'line_chart'" *ngIf="watt" [dataset]="watt">
+            </app-chart>
+        </div>  
     </div>
 </div>
