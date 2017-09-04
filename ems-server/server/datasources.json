@@ -3,6 +3,16 @@
     "name": "db",
     "connector": "memory"
   },
+  "ems": {
+    "host": "localhost",
+    "port": 0,
+    "url": "",
+    "database": "ems",
+    "password": "satunol10",
+    "name": "ems",
+    "user": "root",
+    "connector": "mysql"
+  },
   "rest": {
     "name": "rest",
     "baseURL": "",
@@ -75,15 +85,5 @@
         }
       }
     ]
-  },
-  "ems": {
-    "host": "localhost",
-    "port": 0,
-    "url": "",
-    "database": "ems",
-    "password": "admin",
-    "name": "ems",
-    "user": "root",
-    "connector": "mysql"
   }
 }
