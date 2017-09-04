@@ -7,12 +7,12 @@
     "validateUpsert": true
   },
   "properties": {
-    "label": {
-      "type": "string",
-      "required": true
-    },
     "max_value": {
       "type": "number",
+      "required": true
+    },
+    "label": {
+      "type": "string",
       "required": true
     }
   },
