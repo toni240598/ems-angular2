@@ -1,0 +1,66 @@
+<div class="row" style="overflow-y: hidden;overflow-x: hidden;">
+	<div class="col-md-3 col-sm-12">
+		
+		<h4>Store</h4>
+		<md-input-container style="width:100%;">
+	        <md-placeholder>
+	            <i class="fa fa-search"></i>&nbsp;Press enter to search
+	        </md-placeholder>
+	        <input mdInput> 
+	    </md-input-container>
+		<md-card class="example-card">
+		   
+		</md-card>
+
+	</div>
+	<div class="col-md-9 col-sm-12" style="padding:0px;">
+		<div style="height:91vh;">		
+			<div class="filter">
+				<div class="col-md-1" style="padding-top:10px;padding-left: 20px;">
+					 <button md-mini-fab (click)="refresh()">
+					 	<md-icon>refresh</md-icon>	
+					 </button>
+				</div>
+				<div class="col-md-11">
+				<div class="row">
+					<div class="col-md-3">
+					    <md-select placeholder="Province" [(ngModel)]="id_province" 
+					    (ngModelChange)="setProvince($event)" [ngModelOptions]="{standalone: true}">
+						  <md-option  *ngFor="let a of province" [value]="a.id">
+						  		{{a.label}}
+						  </md-option>
+						</md-select>
+					</div>
+					<div class="col-md-3">
+					    <md-select placeholder="Zone" [(ngModel)]="id_zone" 
+					    (ngModelChange)="setZone($event)" [ngModelOptions]="{standalone: true}">
+						   <md-option  *ngFor="let a of zone" [value]="a.id">
+						  		{{a.label}}
+						  </md-option>
+						</md-select>
+					</div>
+					<div class="col-md-3">
+					    <md-select placeholder="Branch" [(ngModel)]="id_branch" 
+					    (ngModelChange)="setBranch($event)" [ngModelOptions]="{standalone: true}">
+						   <md-option  *ngFor="let a of branch" [value]="a.id">
+						  		{{a.label}}
+						  </md-option>
+						</md-select>
+					</div>
+					<div class="col-md-3">
+					    <md-select placeholder="Store" [(ngModel)]="id_store" 
+					    (ngModelChange)="setStore($event)" [ngModelOptions]="{standalone: true}">
+						   <md-option  *ngFor="let a of store" [value]="a.id">
+						  		{{a.label}}
+						  </md-option>
+						</md-select>
+					</div>
+				</div>
+				</div>
+			</div>
+	        <app-mapv2  [center]="center" [marker]="marker" (action)="action($event)" >	
+			</app-mapv2>
+	    </div>
+	</div>
+</div>
+

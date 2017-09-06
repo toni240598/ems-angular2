@@ -28,6 +28,7 @@ import { SetupZoneComponent } from './ceo/setup/setup-zone/setup-zone.component'
 import { SetupBranchComponent } from './ceo/setup/setup-branch/setup-branch.component';
 import { SetupStoreComponent } from './ceo/setup/setup-store/setup-store.component';
 import { StoreDetailComponent } from './home/store/store-detail/store-detail.component';
+import { MapsComponent } from './ceo/maps/maps.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { StoreDetailComponent } from './home/store/store-detail/store-detail.com
     SetupZoneComponent, 
     SetupBranchComponent, 
     SetupStoreComponent,
-    StoreDetailComponent
+    StoreDetailComponent,
+    MapsComponent
   ]
 })
 export class PagesModule { }

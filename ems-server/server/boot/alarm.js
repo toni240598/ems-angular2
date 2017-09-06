@@ -2,7 +2,6 @@
 
 module.exports = function(server){
 	let router = server.loopback.Router();
-	
 	router.get("/api/alarm",(req,res)=>{
 		let alarm  = {
 			label : "Table History Alarm", 

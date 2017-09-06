@@ -13,7 +13,7 @@ export class StoreDetailComponent implements OnInit {
   subject  : any;
   email    : any = {};
   usrInput = [1];
-  detail: Object;
+  detail: any;
 
 
   constructor(private service : LoopbackService, private route:ActivatedRoute) { }
@@ -41,4 +41,9 @@ export class StoreDetailComponent implements OnInit {
 
   sendMail(){
   }
+
+  action(event){
+
+  }
+
 }

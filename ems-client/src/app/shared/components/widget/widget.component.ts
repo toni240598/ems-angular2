@@ -243,15 +243,15 @@ export class WidgetComponent implements OnInit {
 
 
   setStore(){
-      if(this.url==undefined || this.url == ""){
-         this.url = '../assets/img/none.jpg'; 
-      }
-      else {
-        this.url = "../assets/img/"+this.url;
-      }
-      this.address = this.config.address;
-      this.id      = this.config.id;
-      this.label   = this.config.label;
+      // if(this.url==undefined || this.url == ""){
+      //    this.url = '../assets/img/none.jpg'; 
+      // }
+      // else {
+      //   this.url = "../assets/img/"+this.url;
+      // }
+      // this.address = this.config.address;
+      // this.id      = this.config.id;
+      // this.label   = this.config.label;
   }
 
 

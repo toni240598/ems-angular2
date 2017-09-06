@@ -14,6 +14,7 @@ export class HomeDashboardComponent implements OnInit {
 
   
   // @Input() store:Array<any>;
+  public select:number;
   public dataStore   = [];
   public dataCookies = [];
   public store       : Array<any> = [];
@@ -33,11 +34,11 @@ export class HomeDashboardComponent implements OnInit {
      
   }
 
-  addView(select) {
+  addView(id) {
     let cookies = {};
       for(var i in this.store){
 
-        if(this.store[i].id == select.id){
+        if(this.store[i].id == id){
             cookies = {id:this.store[i].id, type:"watthour", view:["temperature"]};
             this.dataCookies.push(cookies)
             this.history.setGroup(this.dataCookies)

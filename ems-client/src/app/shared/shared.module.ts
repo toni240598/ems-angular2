@@ -34,6 +34,7 @@ import { FormComponent } from "./components/form/form.component";
 import { TableComponent } from "./components/table/table.component";
 import { ChartComponent } from "./components/chart/chart.component";
 import { MapComponent   } from "./components/map/map.component";
+import { Mapv2Component } from './components/mapv2/mapv2.component';
 
 
 @NgModule({
@@ -67,6 +68,7 @@ import { MapComponent   } from "./components/map/map.component";
     MapComponent,
     TableComponent,
     WidgetComponent,
+    Mapv2Component,
   ],
   exports : [
   	ConvertPipe,
@@ -82,6 +84,7 @@ import { MapComponent   } from "./components/map/map.component";
     MapComponent,
     TableComponent,
     WidgetComponent,
+    Mapv2Component,
   ],
   providers : [HistoryService,LoopbackService,Loopbackv2Service]
 })

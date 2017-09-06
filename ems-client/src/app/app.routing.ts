@@ -17,6 +17,7 @@ import { ResolveService } from "./pages/home/store/store-detail/resolve.service"
 import { CeoComponent } from "./pages/ceo/ceo.component";
 import { CeoDashboardComponent } from "./pages/ceo/ceo-dashboard/ceo-dashboard.component";
 import { MapsViewComponent } from "./pages/ceo/maps-view/maps-view.component";
+import { MapsComponent } from "./pages/ceo/maps/maps.component";
 import { SetupComponent } from "./pages/ceo/setup/setup.component";
 import { SetupProvinceComponent  } from "./pages/ceo/setup/setup-province/setup-province.component";
 import { SetupZoneComponent  } from "./pages/ceo/setup/setup-zone/setup-zone.component";
@@ -43,7 +44,7 @@ const routes:Routes = [
    },
    { path :"ceo", component : CeoComponent, data:{state:"ceo"},children : [
         {path : "dashboard", component : CeoDashboardComponent, data:{state:"ceo-dashboard"} },
-        {path : "maps",      component : MapsViewComponent , data:{state:"maps-view"}},
+        {path : "maps",      component : MapsComponent , data:{state:"maps-view"}},
         {path : "setup",     component : SetupComponent, data:{state:"setup"}, children : [
               {path : "province", component : SetupProvinceComponent },
               {path : "zone",     component : SetupZoneComponent     },
@@ -53,7 +54,7 @@ const routes:Routes = [
         ]},
         {path:"", redirectTo:"maps", pathMatch:"full"}
     ]},
-   { path: '', redirectTo: 'home', pathMatch: 'full' }
+   { path: '', redirectTo: 'ceo', pathMatch: 'full' }
 ]
 
 @NgModule({
@@ -61,7 +62,8 @@ const routes:Routes = [
 	    CommonModule,
 	    BrowserModule,
 	    RouterModule.forRoot(routes)
-	]
+	],
+  providers : [ResolveService]
 })
 
 export class AppRouterModule {} 

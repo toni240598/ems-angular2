@@ -1,3 +1,5 @@
+ec2-35-166-240-126.us-west-2.compute.amazonaws.com
+sudo ssh -i "php.pem" ubuntu@ec2-35-166-240-126.us-west-2.compute.amazonaws.com
 # [Material Dashboard Angular - Free Bootstrap Material Design Admin](https://www.creative-tim.com/product/material-dashboard-angular2)[![version][version-badge]][CHANGELOG]
 
 ![alt text](http://s3.amazonaws.com/creativetim_bucket/products/53/original/opt_md_angular_thumbnail.jpg "Material Dashboard Angular Free")

@@ -1,0 +1,67 @@
+<!--  <agm-map 
+	[latitude]="center.latitude" 
+	[longitude]="center.longitude" 
+	[zoom]="center.zoom" 
+	[scrollwheel]="false" 
+	[disableDefaultUI]="true" 
+	[streetViewControl]="false">
+		<agm-marker [latitude]="center.latitude" [longitude]="center.longitude" [label]="'M'">
+        </agm-marker>
+    	<agm-marker *ngFor="let a of marker; let i = index" 
+    	 	[visible]="true" 
+    	 	(mouseOver)="Showinfobox(i)" 
+    	 	(mouseOut)="hiddeninfobox()" 
+    	 	(markerClick)="clickedMarker(a)" 
+    	 	[latitude]="a.latitude" 
+    	 	[longitude]="a.longitude" 
+    	 	[iconUrl]="a.iconUrl">
+            	<agm-info-window 
+            	 [disableAutoPan]="true" 
+            	 [isOpen]="showbox == i">
+			        <div class="col-md-12" align="center">
+			              <strong>{{a.label}}</strong>
+				          <div *ngIf="a.type == 'Store'">
+				            <br>
+				            <strong> KWH   : 0,00 WH</strong><br>
+				            <strong> W/T/H : 0,00 W/ 29 C/ 73%</strong><br><br>
+				            <button md-mini-fab color="accent">0</button>&nbsp;
+				            <button md-mini-fab color="warn">2</button>
+				            <br><br>
+				          </div>
+			        </div>
+      			</agm-info-window>
+    	</agm-marker>
+</agm-map> -->
+
+<agm-map 
+	[latitude]="center.latitude" 
+	[longitude]="center.longitude" 
+	[zoom]="center.zoom" 
+	[scrollwheel]="false" 
+	[disableDefaultUI]="true" 
+	[streetViewControl]="false">
+		<agm-marker *ngFor="let a of marker; let i = index" 
+    	 	[visible]="true" 
+    	 	(mouseOver)="Showinfobox(i)" 
+    	 	(mouseOut)="hiddeninfobox()" 
+    	 	(markerClick)="clickedMarker(a)" 
+    	 	[latitude]="a.latitude" 
+    	 	[longitude]="a.longitude" 
+    	 	[iconUrl]="icon">
+            	<agm-info-window 
+            	 [disableAutoPan]="true" 
+            	 [isOpen]="showbox == i">
+			        <div class="col-md-12" align="center">
+			              <strong>{{a.label}}</strong>
+				          <div *ngIf="a.type == 'Store' ">
+				            <br>
+				            <strong> KWH   : 0,00 WH</strong><br>
+				            <strong> W/T/H : 0,00 W/ 29 C/ 73%</strong><br><br>
+				            <button md-mini-fab color="accent">0</button>&nbsp;
+				            <button md-mini-fab color="warn">2</button>
+				            <br><br>
+				          </div>
+			        </div>
+      			</agm-info-window>
+    	</agm-marker>
+</agm-map>

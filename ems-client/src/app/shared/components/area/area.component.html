@@ -1,4 +1,4 @@
-	<div class="col-lg-12" *ngIf="type == 'building'">
+	<div class="col-lg-12" *ngIf="typeView  == 'building'">
 		<div class="card card-stats">
 			<div class="card-content">
 				<tabset justified="true">
@@ -91,7 +91,7 @@
 		</div>
 	</div>
 
-<div class="card" *ngIf="type != 'building'">
+<div class="card" *ngIf="typeView != 'building'">
 	<div class="card-content">
 		<em *ngIf="typeSave == 'building'" [ngStyle]="{'font-size':13+'px'}">
 			please double tap to delete building ...

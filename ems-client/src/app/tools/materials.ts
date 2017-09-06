@@ -11,7 +11,8 @@ import {
 	  MdDatepickerModule,
 	  MdTabsModule,
 	  MdToolbarModule,
-	  MdNativeDateModule
+	  MdNativeDateModule,
+	  MdCardModule
 } from "@angular/material";
 import "hammerjs";
 
@@ -28,6 +29,7 @@ import "hammerjs";
 	  MdTabsModule,
 	  MdToolbarModule,
 	  MdNativeDateModule,
+	  MdCardModule,
 	  BrowserAnimationsModule
 	]
 })

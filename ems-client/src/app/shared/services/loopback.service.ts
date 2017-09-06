@@ -19,7 +19,8 @@ export class LoopbackService {
     'store-dashboard' : { type:"GET", url:"/api/store/dashboard",params:true     },
     'store-dashboard/chart' :{type :"GET", url : "/api/store/dashboard/chart", params:true },             
     'store-alarm'      : { type:"GET" , url:"/api/store/alarm"  },
-    'store-inventory'  : { type:"GET", url:"/api/store/inventory", params:true},
+    'store-inventory'  : { type:"GET",  url:"/api/store/inventory", params:true},
+    'store-detail'     : { type:"GET",  url:"/api/store/detail", params:true},
     alarm              : { type:"GET" , url:"/api/alarm"        },
     dashboard          : { type:"GET",  url:"/api/dashboard"      },
     inventoryService   : { type:"POST", url:"/api/apps/inventory" }
@@ -45,7 +46,8 @@ export class LoopbackService {
     let config = {
        'store-dashboard/chart' : ["categoryChart","typeChart"],
        'store-dashboard'       :  ["latitude","longitude"],
-       'store-inventory'       :  ["id"]   
+       'store-inventory'       :  ["id"],
+       'store-detail'          : ["latitude", "longitude", "id", "type"] 
     }
     let metadata = config[category];
     for(var i in metadata){

@@ -4,9 +4,10 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <span class="pull-right">
-          <md-select placeholder="Add New Location" [(ngModel)]="select" (change)="addView(select)" 
-          name="select" [ngStyle]="{'margin-top':-15+'px'}">
-            <md-option *ngFor="let select of store" [value]="select">
+          <md-select placeholder="Add New Location" [(ngModel)]="select" 
+          (ngModelChange)="addView($event)" 
+          [ngStyle]="{'margin-top':-15+'px'}">
+            <md-option *ngFor="let select of store" [value]="select.id">
               {{select.label}}
             </md-option>
           </md-select>
